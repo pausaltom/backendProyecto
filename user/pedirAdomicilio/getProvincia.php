@@ -2,23 +2,20 @@
 
 
 <?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    header("location: http://localhost/php/auth/login.html");
+} else {
+    include("../../conexionBD.php");
+    $result = $mysqli->query("SELECT * from provincia");
+    echo ($mysqli->error);
 
-        $mysqli= new mysqli("localhost", "root", "", "icl");
+    while ($row = $result->fetch_object()) {
+        echo ($row->ID_Provincia . " / " . $row->Provincia . "//");
+    }
 
-        if($mysqli->connect_errno){
-            echo("Connect failed: ".$mysqli->connect_error);
-            exit();
-        }
-        
-        $result=$mysqli->query("SELECT * from provincia");
-      
+    $result->free();
+    $mysqli->close();
+}
 
-        while($row = $result->fetch_object())
-        {
-            echo($row->ID_Provincia." / ".$row->Provincia."//");
-            
-        }
-        
-        $result->free();
-        $mysqli->close();
-    ?>
+?>

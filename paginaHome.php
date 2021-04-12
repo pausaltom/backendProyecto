@@ -11,13 +11,14 @@
     <?php
         session_start();
         if(!isset($_SESSION["usuario"])){
-            header("location:login.html");
+            header("location: http://localhost/php/auth/login.html");
         }
     ?>
     
     <h1>Bienvenidos a la mejor Pizzeria</h1>
 
     <p>Si estas aqui es porqué ya estas registrado</p>
+    <p><a href="user/pedirAdomicilio/direccion.php">Introducir Dirección</a></p>
     <p><a href="auth/logout.php">Cerrar Sessión</a></p>
 </body>
 

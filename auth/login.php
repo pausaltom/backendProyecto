@@ -36,6 +36,7 @@
             session_start();
             $_SESSION["usuario"] = $_POST["email"];
             $mysqli->query("UPDATE usuario SET Validado=1 WHERE usuario.Email ='$email'");
+            echo ($mysqli->error);
             header("location:../paginaHome.php");
         } else {
     ?>

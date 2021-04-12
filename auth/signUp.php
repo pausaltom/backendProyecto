@@ -40,12 +40,9 @@
 
 
 
-        $mysqli = new mysqli("localhost", "Cliente", "1234", "icl");
+        
 
-        if ($mysqli->connect_errno) {
-            echo ("Connect failed: " . $mysqli->connect_error);
-            exit();
-        }
+        include("../conexionBD.php");
         $comprobacion = $mysqli->query("SELECT * from usuario WHERE usuario.Email='$email'");
         if (mysqli_num_rows($comprobacion) <= 0) {
             if ($_POST['password'] == $_POST['ConfirmarPassword']) {
@@ -61,7 +58,7 @@
             <span style='color: green;' >Usuario creado con exito!!</span>
         
             </div> ");
-                //header("location:../paginaHome.php");
+                header("location:../paginaHome.php");
             } else {
                 echo ("<div id='Div1'>
                 
