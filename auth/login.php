@@ -25,7 +25,8 @@
         header("location:login.html");
     } else {
         $row = $comprobacion->fetch_object();
-
+        
+        
         if (password_verify($password, $row->Password)) {
             $contador++;
         }
@@ -33,8 +34,14 @@
 
         if ($contador > 0) {
             echo ("Usuario: " . $row->Nombre . " conectado");
+            $RoleUsuActive = $row->ID_Role;
             session_start();
-            $_SESSION["usuario"] = $_POST["email"];
+            $_SESSION['usuario'] = array();
+            $_SESSION['usuario']['email'] = $email;
+            $_SESSION['usuario']['ID_Role'] = $RoleUsuActive;
+            print_r($_SESSION['usuario']);
+
+            
             $mysqli->query("UPDATE usuario SET Validado=1 WHERE usuario.Email ='$email'");
             echo ($mysqli->error);
             header("location:../paginaHome.php");
