@@ -1,8 +1,8 @@
 <?php
-         session_start();
-         if(!isset($_SESSION["usuario"])){
-             header("location: http://localhost/php/auth/login.html");
-         }
+        session_start();
+        if(!isset($_SESSION["usuario"])||($_SESSION['usuario']['ID_Role'] =='2')){
+             header("location: http://localhost/php/comun/logout.php");
+        }
         include("../../conexionBD.php");
 
         $userDireccion=$_GET['userDireccion'];
