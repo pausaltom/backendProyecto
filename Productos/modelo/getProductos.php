@@ -2,6 +2,7 @@
 
     include("../../comun/conexionBD.php");
 
+<<<<<<< HEAD
 
     $registrosPorPag=3;
     
@@ -14,6 +15,15 @@
     }else{
        $pagina=1; 
     }    
+=======
+    
+    $registrosPorPag=3;
+    
+    
+    $pagina=$_GET["pagina"];
+        
+    
+>>>>>>> 9fab12aa38c884b94414d62463eac31e5b0d4f8d
 
     $empezar_desde = ($pagina-1) * $registrosPorPag;
     
@@ -28,6 +38,7 @@
     while ($row = $resultPagianado->fetch_object()) {
         echo ($row->ID_Producto . " / " . $row->img ." / ".$row->Nombre . " / ".$row->Precio . "//");
     }
+<<<<<<< HEAD
 
 
     //-------------------------------------------- Paginación --------------------------------------------
@@ -35,6 +46,12 @@
     for ($i=1; $i < $total_paginas; $i++) { 
         echo "<a class='paginacion' href='?pagina=" . $i . "'>" . $i . "</a> ";
     }
+=======
+    echo("#");
+    echo($total_paginas);
+
+   
+>>>>>>> 9fab12aa38c884b94414d62463eac31e5b0d4f8d
     
     $result->free();
     $mysqli->close();
