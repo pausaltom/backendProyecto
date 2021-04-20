@@ -10,7 +10,7 @@
 <body>
     <?php
 
-    include("../conexionBD.php");
+    include("../comun/conexionBD.php");
 
     
 
